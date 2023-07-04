@@ -1,5 +1,3 @@
-Certainly! Here's an updated version of the README file with an author section:
-
 # Go Microservice :rocket:
 
 Go Microservice is a collection of microservices built using Golang and follows a hexagonal microservice architecture with Go kit. It provides a scalable and modular foundation for building distributed systems.
