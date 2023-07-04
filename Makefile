@@ -12,11 +12,7 @@ gen-all: $(STUBS) $(GOOGLE_STUBS)
 
 $(TRANSPORT_DIR)/%/pb/%.pb.go: $(PROTO_DIR)/%.proto
 	mkdir -p $(TRANSPORT_DIR)/$(dir $*)/pb
-	protoc --proto_path=$(PROTO_DIR) --go_out=$(TRANSPORT_DIR) --go_opt=paths=source_relative $<
-
-$(TRANSPORT_DIR)/google/%/pb/%.pb.go: $(PROTO_DIR)/google/%.proto
-	mkdir -p $(TRANSPORT_DIR)/google/$(dir $*)/pb
-	protoc --proto_path=$(PROTO_DIR) --go_out=$(TRANSPORT_DIR) --go_opt=paths=source_relative,plugins=grpc:$(TRANSPORT_DIR) $<
+	protoc --proto_path=$(PROTO_DIR) --go_out=$(TRANSPORT_DIR) --go_opt=paths=source_relative --go-grpc_out=$(TRANSPORT_DIR) --go-grpc_opt=paths=source_relative $<
 
 clean:
 	rm -rf $(TRANSPORT_DIR)/*
